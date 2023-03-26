@@ -1,1 +1,2 @@
 # thezipcodes [![GoDoc](https://godoc.org/github.com/itsmontoya/thezipcodes?status.svg)](https://godoc.org/github.com/itsmontoya/thezipcodes) ![Status](https://img.shields.io/badge/status-beta-yellow.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/itsmontoya/thezipcodes)](https://goreportcard.com/report/github.com/itsmontoya/thezipcodes)
+This is a client library for the `thezipcodes.com` API. Currently, this supports all the exposed features of the API. If any changes and/or new features need to be supported. Please create an issue or a pull request.
