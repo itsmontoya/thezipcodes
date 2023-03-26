@@ -1,4 +1,4 @@
-package zipcodes
+package thezipcodes
 
 type getZipcodeAddressResponse struct {
 	baseResponse
