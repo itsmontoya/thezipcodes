@@ -96,3 +96,16 @@ func TestClient_GetZipcodeAddress(t *testing.T) {
 		})
 	}
 }
+
+func TestClient_GetZipcodeAddress_rate_limiting(t *testing.T) {
+	c, err := New(testAPIKey)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for i := 0; i < 10; i++ {
+		if _, err = c.GetZipcodeAddress("97227", "US"); err != nil {
+			t.Fatal(err)
+		}
+	}
+}

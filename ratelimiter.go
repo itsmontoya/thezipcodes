@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-const rateLimitDuration = time.Second
+const rateLimitDuration = time.Second * 2
 
 func makeRateLimiter() (r rateLimiter) {
 	r.c = make(chan semaphore)
