@@ -52,6 +52,29 @@ func TestClient_GetZipcodeAddress(t *testing.T) {
 			},
 			wantErr: false,
 		},
+
+		{
+			name: "Australia",
+			args: args{
+				zipCode:     "2000",
+				countryCode: "AU",
+			},
+			wantLocations: []Location{
+				{
+					Country:      "Australia",
+					CountryCode2: "AU",
+					CountryCode3: "AUS",
+					State:        "New South Wales",
+					StateCode2:   "NSW",
+					Latitude:     "-33.8641",
+					Longitude:    "151.2017",
+					ZipCode:      "2000",
+					City:         "Barangaroo",
+					TimeZone:     "Australian Central Time",
+				},
+			},
+			wantErr: false,
+		},
 	}
 
 	c, err := New(testAPIKey)
@@ -68,7 +91,7 @@ func TestClient_GetZipcodeAddress(t *testing.T) {
 			}
 
 			if !reflect.DeepEqual(gotLocations, tt.wantLocations) {
-				t.Errorf("Client.Get() = %v, want %v", gotLocations, tt.wantLocations)
+				t.Errorf("Client.Get() = %+v, want %+v", gotLocations, tt.wantLocations)
 			}
 		})
 	}
