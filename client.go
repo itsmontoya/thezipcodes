@@ -106,7 +106,7 @@ func (c *Client) do(url string, out apiResponse) (err error) {
 	}
 
 	if !out.IsSuccessful() {
-		err = errors.New("request was no successful")
+		err = errors.New("request was not successful")
 		return
 	}
 
