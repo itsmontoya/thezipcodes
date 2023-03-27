@@ -28,11 +28,13 @@ func New(apiKey string) (ref *Client, err error) {
 	}
 
 	c.apiKey = apiKey
+	c.r = makeRateLimiter()
 	ref = &c
 	return
 }
 
 type Client struct {
+	r    rateLimiter
 	hc   http.Client
 	host *url.URL
 
@@ -89,6 +91,9 @@ func (c *Client) do(url string, out apiResponse) (err error) {
 	}
 
 	req.Header.Set("apikey", c.apiKey)
+
+	// Wait for rate limiter
+	c.r.Request()
 
 	var resp *http.Response
 	if resp, err = c.hc.Do(req); err != nil {
